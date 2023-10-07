@@ -8,10 +8,10 @@
             <img src="static/img/twitter_logo.png">
         </div>
         <div class = reg_auth_form>    
-            <form>
+            <form action="includes/singin.php" method="post">
                 <input type="text" id="login" name="login" required placeholder="Логін або електронна пошта">
                 <input type="password" id="password" name="password" required placeholder="Пароль">
-                <button>Увійти</button>
+                <button type = "submit">Увійти</button>
                 <p>Немає облікового запису? <a href="register.php">Зареєструватись</a></p>
             </form>
         </div>
