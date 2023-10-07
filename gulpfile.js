@@ -4,6 +4,7 @@ const csso = require('gulp-csso');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 
+//converting scss to css
 function scss() {
     return src('src/scss/**/*.scss')
         .pipe(sass())

@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main_section {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+.main_section div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #000000;
+  justify-content: center;
+  text-align: center;
+}
+form input, form button, form p {
+  text-align: center;
+  margin: 10px 0;
+  padding: 1vh;
+}
+form input {
+  border: unset;
+  border-bottom: 2px solid #e3e3e3;
+  height: 20px;
+  outline: none;
+}
+form button {
+  background-color: #e3e3e3;
+  height: 40px;
+  border: unset;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #d5d8d9;
+  border-bottom: 2px solid #e3e3e3;
+}/*# sourceMappingURL=main.css.map */
