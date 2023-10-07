@@ -19,6 +19,7 @@
     "gulp-scss": "^1.1.2"
   },
   "dependencies": {
+    "jquery": "^3.7.1",
     "sass": "^1.69.0"
   }
 }

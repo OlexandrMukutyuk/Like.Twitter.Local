@@ -1,7 +1,6 @@
-$red:red;
-$dark: rgb(0,0,0);
-$main_button_color: #e3e3e3;
-$main_button_hover_color:#d5d8d9;
+@import "var";
+@import "mixins";
+
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +11,7 @@ html, body{
     
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+//all main block settings
 .main_section{
     display: flex;
     flex-direction: row;
@@ -34,6 +34,7 @@ html, body{
     }
 
 }
+// form settings
 form{
     margin: 2vw;
     padding: 2vw;
@@ -61,17 +62,16 @@ form{
         height: 40px;
         border: unset;
         cursor: pointer;
+        &:hover{
+            background-color: $main_button_hover_color;
+            border-bottom: 2px solid $main_button_color;
+        }
     }
 
-    button:hover{
-        background-color: $main_button_hover_color;
-        border-bottom: 2px solid $main_button_color;
-    }
 
     p{
         a{
-            text-decoration: none;
-            color: rgb(105, 159, 210);
+            @include color_hover( rgb(105, 159, 210),rgb(84, 104, 196) );
         }
     }
 }
