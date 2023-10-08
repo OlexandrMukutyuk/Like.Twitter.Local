@@ -1,7 +1,7 @@
 <?php
 require_once 'classes/user.php';
 session_start();
-$title = "Головна";
+$title = "Профіль";
 if(!$_SESSION['user']){
     header('Location: authorization.php');
 }
