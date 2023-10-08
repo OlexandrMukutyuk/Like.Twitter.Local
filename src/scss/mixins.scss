@@ -1,7 +1,12 @@
+@import "var";
 @mixin color_hover($color,$hover){
     text-decoration: none;
     color: $color;
     &:hover{
         color: $hover;
     }
+}
+
+@mixin block_padding{
+    margin-left: ($menu_padding * 2);
 }
