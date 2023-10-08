@@ -6,12 +6,12 @@ session_start();
 <div class="container">
     <div class="sidebar">
         <div class="sidebar-content">
-            <img src="static/img/twitter_logo.png">
+            <img id="home_img" src="static/img/twitter_logo.png">
             <ul>
-                <li><img src="static/img/twitter_logo.png"><a>Головна</a></li>
-                <li><img src="static/img/twitter_logo.png"><a>Профіль</a></li>
-                <li><img src="static/img/twitter_logo.png"><a>Зробити Пост</a></li>
-                <li>
+                <li id="home"><img src="static/img/twitter_logo.png"><a>Головна</a></li>
+                <li id="profile"><img src="static/img/twitter_logo.png"><a>Профіль</a></li>
+                <li id="make-post"><img src="static/img/twitter_logo.png"><a>Зробити Пост</a></li>
+                <li id="user-info">
                     <div class="item">
                         <img src="static/img/twitter_logo.png">
                         <div class="text">
@@ -23,4 +23,11 @@ session_start();
             </ul>
         </div>
     </div>
+    <div id="popup" class="popup">
+        <h1>Ви дійсно хочете вийти із акауну</h1>
+        <button id="logout-button">Вийти</button>
+    </div>
     <div class="content">
+
+    <script src="dist/main.js"></script>
+    <script src = "static/js/menu.js"></script>

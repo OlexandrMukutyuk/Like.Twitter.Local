@@ -1,4 +1,5 @@
 <?php
+    $title = "Tmp";
     require_once 'classes/user.php';
     session_start();
     if (!$_SESSION['user']){
