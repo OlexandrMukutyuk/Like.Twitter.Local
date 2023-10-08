@@ -1,0 +1,99 @@
+@import "var";
+@import "mixins";
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: $menu_width;
+    height: 100vh;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 0 20px 0 20px;
+
+    .sidebar-content {
+        text-align: right;
+        margin-right: $menu_padding;
+        margin-top: 2vh;
+        > img {
+            margin-top: 0;
+            width: 5vw;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            box-shadow:4px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+
+            &:hover{
+                background-color: rgb(172, 172, 172);
+                cursor: pointer;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                text-align: left;
+                margin-bottom: 10px;
+                padding-right: 1vw;
+                margin-left: 3vw;
+                transition: all 0.3s ease;
+                img {
+                    width: 3vw;
+                }
+                &:hover{
+                    box-shadow:4px 4px 8px rgba(0, 0, 0, 0.2);
+                    border-radius: 10px;
+                    background-color: rgb(172, 172, 172);
+                    cursor: pointer;
+                    a , >div>div{
+                        margin-left: 1vw;
+                        color: rgb(255, 255, 255);
+                    }
+                    
+                }
+
+                a {
+                    text-decoration: none;
+                    color: rgba(0, 0, 0);
+                }
+
+                .item {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 3vw;
+                        margin-right: 10px; 
+                    }
+
+                    .text {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            li:last-child {
+                margin-top: (100vh - 50vh); 
+                box-shadow:4px 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+.content {
+    margin-left: $menu_width;
+    flex-grow: 1;
+    overflow: auto;
+}
+
