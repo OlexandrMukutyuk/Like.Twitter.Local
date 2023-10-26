@@ -7,6 +7,7 @@
         unset($_SESSION['errorLOGINorEMAIL']);
     }
 ?>
+
     <section class = "main_section">
         <div class = "login_img">
             <img src="static/img/twitter_logo.png">
@@ -25,6 +26,7 @@
     </section>
     <script src="dist/main.js"></script>
     <script src = "static/js/register.js"></script>
+    
 <?php
     require('templates/foter_HTML.php');
 

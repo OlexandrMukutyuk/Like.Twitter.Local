@@ -28,6 +28,7 @@ require('templates/menu.php');
 
 <script src="dist/main.js"></script>
     <script src = "static/js/make_post.js"></script>
+
 <?php
     require('templates/foter_HTML.php');
 ?>

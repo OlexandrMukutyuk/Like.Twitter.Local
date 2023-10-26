@@ -3,6 +3,8 @@
     require('templates/header_HTML.php');
 
 ?>
+
+
     <section class = "main_section">
         <div class = "login_img">
             <img src="static/img/twitter_logo.png">
@@ -16,6 +18,9 @@
             </form>
         </div>
     </section>
+
+
+
 <?php
     require('templates/foter_HTML.php');
 

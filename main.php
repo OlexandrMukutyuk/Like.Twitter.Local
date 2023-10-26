@@ -1,20 +1,17 @@
 <?php
+require_once 'includes/connect.php';
 require_once 'classes/user.php';
 session_start();
 $title = "Головна";
-if(!$_SESSION['user']){
+if (!$_SESSION['user']) {
     header('Location: authorization.php');
 }
 
 require('templates/header_HTML.php');
-
 require('templates/menu.php');
 
-?>
-<?php
-require_once 'includes/connect.php';
-
 $sql = "SELECT * FROM post_message ORDER BY time DESC";
+$messageBlocks = ''; // Змінна для зберігання HTML-блоків
 
 try {
     $stmt = $connections->query($sql);
@@ -38,27 +35,22 @@ try {
                 $htmlBlock .= '</div>';
                 $htmlBlock .= '</div>';
 
-                echo $htmlBlock;
+                $messageBlocks .= $htmlBlock;
 
-                $user_query->closeCursor(); // Звільнити результати запиту до user
+                $user_query->closeCursor();
             }
         }
-        $stmt->closeCursor(); // Звільнити результати основного запиту
+        $stmt->closeCursor();
     }
 } catch (PDOException $e) {
     echo "Помилка: " . $e->getMessage();
 }
 ?>
 
-
-
-
-
-    </div>
+<div class="main-content">
+    <?php echo $messageBlocks; ?>
 </div>
 
-
-
 <?php
-    require('templates/foter_HTML.php');
+require('templates/foter_HTML.php');
 ?>
