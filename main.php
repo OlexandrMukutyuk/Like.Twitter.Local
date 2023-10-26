@@ -16,44 +16,40 @@ require_once 'includes/connect.php';
 
 $sql = "SELECT * FROM post_message ORDER BY time DESC";
 
-$result = mysqli_query($connections, $sql);
+try {
+    $stmt = $connections->query($sql);
 
-if ($result) {
+    if ($stmt) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $user_id = $row['user_id'];
+            $user_query = $connections->query("SELECT * FROM Users WHERE id = $user_id");
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $user_id = $row['user_id'];
-        $user_query = mysqli_query($connections, "SELECT * FROM Users WHERE id = $user_id");
-        if($_SESSION['user']->id != $row['user_id']){
-            if ($user_query) {
-                $user_row = mysqli_fetch_assoc($user_query);
+            if ($_SESSION['user']->id != $row['user_id'] && $user_query) {
+                $user_row = $user_query->fetch(PDO::FETCH_ASSOC);
 
                 $htmlBlock = '<div class="result-block">';
                 $htmlBlock .= '<div class="user-photo">';
                 $htmlBlock .= '<img src="static/img/twitter_logo.png" alt="Фото користувача">';
                 $htmlBlock .= '</div>';
                 $htmlBlock .= '<div class="message-info">';
-                $htmlBlock .= '<p class="message">' . $row['message'] . '</p>';
-                $htmlBlock .= '<p class="user-name">Користувач: ' . $user_row['name'] . '</p>';
+                $htmlBlock .= '<p class="message">' . htmlspecialchars($row['message'], ENT_QUOTES, 'UTF-8') . '</p>';
+                $htmlBlock .= '<p class="user-name">Користувач: ' . htmlspecialchars($user_row['name'], ENT_QUOTES, 'UTF-8') . '</p>';
                 $htmlBlock .= '<p class="time">Дата: ' . $row['time'] . '</p>';
                 $htmlBlock .= '</div>';
                 $htmlBlock .= '</div>';
-            
+
                 echo $htmlBlock;
 
-                mysqli_free_result($user_query); // Звільнити результати запиту до user
+                $user_query->closeCursor(); // Звільнити результати запиту до user
             }
         }
+        $stmt->closeCursor(); // Звільнити результати основного запиту
     }
-
-    mysqli_free_result($result);
-} else {
-
-    echo "Помилка: " . mysqli_error($connections);
+} catch (PDOException $e) {
+    echo "Помилка: " . $e->getMessage();
 }
-
-// Закрийте підключення до бази даних
-mysqli_close($connections);
 ?>
+
 
 
 
