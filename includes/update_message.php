@@ -1,7 +1,19 @@
 <?php
-    require_once 'connect.php';
-    $id = $_GET['id'];
-    $mess = $_GET['mess'];
+require_once 'connect.php';
+$id = $_GET['id'];
+$mess = $_GET['mess'];
 
-    mysqli_query($connections, "UPDATE post_message SET message = '$mess' WHERE id = $id");
-    header('Location: ../profile.php');
+try {
+   $stmt = $connections->prepare("UPDATE post_message SET message = :mess WHERE id = :id");
+    $stmt->bindParam(':mess', $mess, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    if ($stmt->execute()) {
+        header('Location: ../profile.php');
+    } else {
+        echo "Помилка при оновленні повідомлення.";
+    }
+} catch (PDOException $e) {
+    echo "Помилка: " . $e->getMessage();
+}
+?>
