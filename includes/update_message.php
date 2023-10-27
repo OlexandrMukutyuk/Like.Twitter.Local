@@ -3,17 +3,9 @@ require_once 'connect.php';
 $id = $_GET['id'];
 $mess = $_GET['mess'];
 
-try {
-   $stmt = $connections->prepare("UPDATE post_message SET message = :mess WHERE id = :id");
-    $stmt->bindParam(':mess', $mess, PDO::PARAM_STR);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+require_once 'database.php'; 
 
-    if ($stmt->execute()) {
-        header('Location: ../profile.php');
-    } else {
-        echo "Помилка при оновленні повідомлення.";
-    }
-} catch (PDOException $e) {
-    echo "Помилка: " . $e->getMessage();
-}
+$dbOperations = new DatabaseOperations();
+$dbOperations->updatePostMessage($id, $mess);
+
 ?>

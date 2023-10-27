@@ -1,20 +1,15 @@
 <?php
 session_start();
-require_once 'connect.php'; 
 
-$date = date('Y-m-d H:i:s');
-echo $date;
+require_once 'database.php'; 
 
-try {
-    $stmt = $connections->prepare("INSERT INTO post_message (user_id, message, time) VALUES (?, ?, ?)");
-    if ($stmt->execute([$_POST['user_id'], $_POST['post_message_t'], $date])) {
-        $_SESSION['post_message'] = "Успішно зроблений пост";
-    } else {
-        $_SESSION['post_message'] = "Незмогли добавити повідомлення у базу даних";
-    }
-} catch (PDOException $e) {
-    $_SESSION['post_message'] = "Помилка при виконанні запиту: " . $e->getMessage();
+$dbOperations = new DatabaseOperations();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['post_message_t'])) {
+    $user_id = $_POST['user_id'];
+    $post_message_t = $_POST['post_message_t'];  
+
+    $dbOperations->insertPostMessage($user_id, $post_message_t) ;
+
 }
-
-header('Location: ../make_post.php');
 ?>
