@@ -55,7 +55,8 @@ class DatabaseOperations {
             $stmt = $this->connections->prepare($sql);
             $stmt->bindParam(':login', $login, PDO::PARAM_STR);
             $stmt->bindParam(':email', $login, PDO::PARAM_STR);
-            $stmt->bindParam(':password', md5($password), PDO::PARAM_STR);
+            $hashedPassword = md5($password);
+            $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
@@ -79,7 +80,8 @@ class DatabaseOperations {
             $stmt->bindParam(':login', $login, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $stmt->bindParam(':password', md5($password), PDO::PARAM_STR);
+            $hashedPassword = md5($password);
+            $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
 
             if ($stmt->execute()) {
 
