@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once 'connect.php';
 require_once '../classes/user.php';
 require_once 'database.php'; 
 $dbOperations = new DatabaseOperations();

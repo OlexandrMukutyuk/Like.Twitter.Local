@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../classes/user.php';
 $id = $_GET['id'];
 $mess = $_GET['mess'];
 
